@@ -11,6 +11,21 @@ import(
 	"errors"
 )
 
+//structs
+type engine struct{
+	mpg uint8
+	gallons uint8
+}
+
+type owner struct{
+	name string
+}
+
+type car struct{
+	carengine engine
+	owner owner
+}
+
 func main(){
 	//int variable
 	var intNum int = 10
@@ -190,7 +205,25 @@ World`
 		fmt.Println(i, value)
 	}
 
-	
+	//while loop alternative because go doesnt support while loops
+	var mycounter int = 0
+	for {
+		if mycounter >=10{
+			break
+		}
+		fmt.Println(mycounter)
+		mycounter++
+	}
+
+	//using structs. here we're using the structs defined on top of the module.
+	var myEngine engine = engine{mpg: 10, gallons: 12}
+	fmt.Println(myEngine.mpg)
+	fmt.Println(myEngine.gallons)
+
+	var myCar car = car{carengine: myEngine, owner: owner{name: "John"}}
+
+	fmt.Println(myCar.carengine.mpg)
+	fmt.Println(myCar.owner.name)
 
 }
 
